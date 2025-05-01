@@ -1,13 +1,11 @@
 <?php
-// index.php
-
 // 1. Read the team name from the query string (default to “PHI” if not set)
 $selectedTeam = isset($_GET['team']) && trim($_GET['team']) !== ''
     ? trim($_GET['team'])
     : 'PHI';
 
 // 2. Build the API URL with the team parameter
-$apiUrl = "http://3.86.234.181/api/roster-fetch.php?team=" . urlencode($selectedTeam);
+$apiUrl = "http://44.212.9.251/api/roster-fetch.php?team=" . urlencode($selectedTeam);
 
 // 3. Fetch the JSON data
 $jsonData = @file_get_contents($apiUrl);
@@ -28,7 +26,9 @@ $roster = $data['body']['roster'];
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Team Roster Lookup</title>
+  <title>Redzone Statistics</title>
+<link rel="stylesheet" href="styles.css">
+
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     form { 
@@ -49,9 +49,9 @@ $roster = $data['body']['roster'];
   </style>
 </head>
 <body>
-
+<img src="redzone_logo.jpg" alt="company logo" style="width:300px;height:300px; display: block; margin-left: auto; margin-right: auto;">
   <!-- 1) New Preferences Form -->
-  <form method="post" action="http://3.86.234.181/api/db-create.php">
+  <form method="post" action="http://44.212.9.251/api/db-create.php">
     <h2>Submit Your Preferences</h2>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required />
